@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Build
+        uses: subosito/flutter-action@v1
+        with:
+          channel: 'master'
+      - run: |
+          flutter config --enable-web
+          flutter pub get
+          flutter build web
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy
+        env:
+          PROJECT_ID: backscreen-generator
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
