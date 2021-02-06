@@ -4,9 +4,7 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'entry_form.dart';
 
 class EntryFormPage extends StatelessWidget {
@@ -92,7 +90,10 @@ class EntryFormPage extends StatelessWidget {
               child: Text('Generate'),
               onPressed: () async {
                 final data = await createImageFromWidget(GeneratedScreen(value: EntryForm.fromJson(form.value)));
-                launch("data:application/octet-stream;name=backscreen.png;base64,${base64Encode(data)}");
+                final href = "data:application/octet-stream;name=backscreen.png;base64,${base64Encode(data)}";
+                final anchorElement = AnchorElement(href: href);
+                anchorElement.download = 'backscreen.png';
+                anchorElement.click();
               },
             ),
             Builder(builder: (context) {
