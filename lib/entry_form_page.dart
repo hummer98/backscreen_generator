@@ -4,12 +4,13 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'entry_form.dart';
 
 class EntryFormPage extends StatelessWidget {
-  final _key = GlobalKey();
-
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final form = FormGroup({
@@ -19,87 +20,137 @@ class EntryFormPage extends StatelessWidget {
       'twitter': FormControl(value: '@hummer'),
       'description': FormControl(value: 'いい感じにフリーランス8期目\nだけど質問ある？'),
     });
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('EntryFormPage'),
+        title: Text('Zoomバーチャル背景ジェネレーター'),
       ),
       body: ReactiveForm(
         formGroup: form,
-        child: ListView(
-          shrinkWrap: true,
+        key: _formKey,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ReactiveTextField(
-                formControlName: 'name',
-                decoration: InputDecoration(
-                  isDense: true,
-                  border: const OutlineInputBorder(),
-                  labelText: '名前',
-                ),
+            Container(
+              width: 300,
+              padding: EdgeInsets.all(8.0),
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  Center(child: Text('入力', style: Theme.of(context).textTheme.headline5)),
+                  ReactiveTextField(
+                    formControlName: 'takingAbout',
+                    decoration: InputDecoration(
+                      isDense: true,
+                      border: const OutlineInputBorder(),
+                      labelText: '話したいこと',
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  ReactiveTextField(
+                    formControlName: 'name',
+                    decoration: InputDecoration(
+                      isDense: true,
+                      border: const OutlineInputBorder(),
+                      labelText: '名前',
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  ReactiveTextField(
+                    formControlName: 'twitter',
+                    decoration: InputDecoration(
+                      isDense: true,
+                      border: const OutlineInputBorder(),
+                      labelText: 'Twitterアカウント',
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  ReactiveTextField(
+                    formControlName: 'times',
+                    style: TextStyle(height: 1.2, inherit: true),
+                    decoration: InputDecoration(
+                      isDense: true,
+                      border: const OutlineInputBorder(),
+                      labelText: 'times',
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  ReactiveTextField(
+                    formControlName: 'description',
+                    style: TextStyle(height: 1.2, inherit: true),
+                    maxLines: 4,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      border: const OutlineInputBorder(),
+                      labelText: '自己紹介',
+                    ),
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        height: 40,
+                        width: 200,
+                        child: RaisedButton(
+                          color: Colors.blue,
+                          child: Text(
+                            '生成する！',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          onPressed: () async {
+                            final data = await createImageFromWidget(GeneratedScreen());
+                            final href =
+                                "data:application/octet-stream;name=backscreen.png;base64,${base64Encode(data)}";
+                            final anchorElement = AnchorElement(href: href);
+                            anchorElement.download = 'backscreen.png';
+                            anchorElement.click();
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 32),
+                  Text('作った人'),
+                  SizedBox(height: 8),
+                  Text('Twitter:'),
+                  Linkify(
+                    onOpen: (link) async {
+                      if (await canLaunch(link.url)) {
+                        await launch(link.url);
+                      } else {
+                        throw 'Could not launch $link';
+                      }
+                    },
+                    text: 'https://twitter.com/hummer',
+                  ),
+                  SizedBox(height: 8),
+                  Text('Github:'),
+                  Linkify(
+                    onOpen: (link) async {
+                      if (await canLaunch(link.url)) {
+                        await launch(link.url);
+                      } else {
+                        throw 'Could not launch $link';
+                      }
+                    },
+                    text: 'https://github.com/hummer98/backscreen_generator',
+                  ),
+                ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ReactiveTextField(
-                formControlName: 'takingAbout',
-                decoration: InputDecoration(
-                  isDense: true,
-                  border: const OutlineInputBorder(),
-                  labelText: '話したいこと',
+            Column(
+              children: [
+                Text('プレビュー', style: Theme.of(context).textTheme.headline5),
+                Container(
+                  margin: EdgeInsets.all(8),
+                  width: 1920 / 2,
+                  height: 1024 / 2,
+                  child: ReactiveFormConsumer(builder: (context, formGroup, snapshot) {
+                    return GeneratedScreen();
+                  }),
                 ),
-              ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ReactiveTextField(
-                formControlName: 'times',
-                style: TextStyle(height: 1.2, inherit: true),
-                decoration: InputDecoration(
-                  isDense: true,
-                  border: const OutlineInputBorder(),
-                  labelText: 'times',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ReactiveTextField(
-                formControlName: 'twitter',
-                decoration: InputDecoration(
-                  isDense: true,
-                  border: const OutlineInputBorder(),
-                  labelText: 'Twitterアカウント',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ReactiveTextField(
-                formControlName: 'description',
-                style: TextStyle(height: 1.2, inherit: true),
-                maxLines: 4,
-                decoration: InputDecoration(
-                  isDense: true,
-                  border: const OutlineInputBorder(),
-                  labelText: '自己紹介',
-                ),
-              ),
-            ),
-            OutlineButton(
-              child: Text('Generate'),
-              onPressed: () async {
-                final data = await createImageFromWidget(GeneratedScreen(value: EntryForm.fromJson(form.value)));
-                final href = "data:application/octet-stream;name=backscreen.png;base64,${base64Encode(data)}";
-                final anchorElement = AnchorElement(href: href);
-                anchorElement.download = 'backscreen.png';
-                anchorElement.click();
-              },
-            ),
-            Builder(builder: (context) {
-              final form = ReactiveForm.of(context);
-              return GeneratedScreen(value: EntryForm.fromJson(form.value));
-            }),
           ],
         ),
       ),
@@ -143,7 +194,7 @@ class EntryFormPage extends StatelessWidget {
 class Caption extends StatelessWidget {
   final String text;
   final double fontSize;
-  const Caption(this.text, {Key key, this.fontSize = 36.0}) : super(key: key);
+  const Caption(this.text, {Key key, this.fontSize = 32.0}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -156,19 +207,18 @@ class Caption extends StatelessWidget {
 class GeneratedScreen extends StatelessWidget {
   const GeneratedScreen({
     Key key,
-    // @required this.captureKey,
-    @required this.value,
+    // @required this.value,
   }) : super(key: key);
 
-  // final GlobalKey captureKey;
-  final EntryForm value;
+  // final EntryForm value;
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('rebuild!');
+    final value = EntryForm.fromJson(ReactiveForm.of(context).value);
     return Container(
-      // key: captureKey,
       color: Colors.grey,
-      margin: EdgeInsets.all(48),
+      padding: EdgeInsets.all(8),
       child: AspectRatio(
         aspectRatio: 16 / 9,
         child: Stack(
@@ -180,10 +230,7 @@ class GeneratedScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Caption(
-                    value.takingAbout,
-                    fontSize: 48,
-                  ),
+                  Caption(value.takingAbout, fontSize: 48),
                   Caption(value.name),
                   Caption(value.twitter),
                   Caption(value.times),
@@ -191,13 +238,10 @@ class GeneratedScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: 48,
+              bottom: 0,
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Caption(
-                  value.description,
-                  fontSize: 32,
-                ),
+                child: Caption(value.description, fontSize: 24),
               ),
             ),
           ],
