@@ -26,7 +26,7 @@ class EntryFormPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Zoomバーチャル背景ジェネレーター'),
+        title: Text('バーチャル背景ジェネレーター'),
       ),
       body: ReactiveForm(
         formGroup: form,

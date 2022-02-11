@@ -1,5 +1,5 @@
 name: backscreen_generator
-description: Zoomでの懇親会のバーチャル背景画像を簡単に作れるジェネレータです
+description: 自己紹介を書いたバーチャル背景画像を簡単に作れます！
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
