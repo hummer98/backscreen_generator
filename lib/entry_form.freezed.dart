@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'entry_form.dart';
 
@@ -8,6 +10,10 @@ part of 'entry_form.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 EntryForm _$EntryFormFromJson(Map<String, dynamic> json) {
   return _EntryForm.fromJson(json);
 }
@@ -16,13 +22,12 @@ EntryForm _$EntryFormFromJson(Map<String, dynamic> json) {
 class _$EntryFormTearOff {
   const _$EntryFormTearOff();
 
-// ignore: unused_element
   _EntryForm call(
-      {@required String takingAbout,
-      @required String name,
-      @required String times,
-      @required String twitter,
-      @required String description}) {
+      {required String takingAbout,
+      required String name,
+      required String times,
+      required String twitter,
+      required String description}) {
     return _EntryForm(
       takingAbout: takingAbout,
       name: name,
@@ -32,27 +37,26 @@ class _$EntryFormTearOff {
     );
   }
 
-// ignore: unused_element
-  EntryForm fromJson(Map<String, Object> json) {
+  EntryForm fromJson(Map<String, Object?> json) {
     return EntryForm.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $EntryForm = _$EntryFormTearOff();
 
 /// @nodoc
 mixin _$EntryForm {
-  String get takingAbout;
-  String get name;
-  String get times;
-  String get twitter;
-  String get description;
+  String get takingAbout => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get times => throw _privateConstructorUsedError;
+  String get twitter => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EntryFormCopyWith<EntryForm> get copyWith;
+  $EntryFormCopyWith<EntryForm> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -77,20 +81,33 @@ class _$EntryFormCopyWithImpl<$Res> implements $EntryFormCopyWith<$Res> {
 
   @override
   $Res call({
-    Object takingAbout = freezed,
-    Object name = freezed,
-    Object times = freezed,
-    Object twitter = freezed,
-    Object description = freezed,
+    Object? takingAbout = freezed,
+    Object? name = freezed,
+    Object? times = freezed,
+    Object? twitter = freezed,
+    Object? description = freezed,
   }) {
     return _then(_value.copyWith(
-      takingAbout:
-          takingAbout == freezed ? _value.takingAbout : takingAbout as String,
-      name: name == freezed ? _value.name : name as String,
-      times: times == freezed ? _value.times : times as String,
-      twitter: twitter == freezed ? _value.twitter : twitter as String,
-      description:
-          description == freezed ? _value.description : description as String,
+      takingAbout: takingAbout == freezed
+          ? _value.takingAbout
+          : takingAbout // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      times: times == freezed
+          ? _value.times
+          : times // ignore: cast_nullable_to_non_nullable
+              as String,
+      twitter: twitter == freezed
+          ? _value.twitter
+          : twitter // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -120,42 +137,49 @@ class __$EntryFormCopyWithImpl<$Res> extends _$EntryFormCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object takingAbout = freezed,
-    Object name = freezed,
-    Object times = freezed,
-    Object twitter = freezed,
-    Object description = freezed,
+    Object? takingAbout = freezed,
+    Object? name = freezed,
+    Object? times = freezed,
+    Object? twitter = freezed,
+    Object? description = freezed,
   }) {
     return _then(_EntryForm(
-      takingAbout:
-          takingAbout == freezed ? _value.takingAbout : takingAbout as String,
-      name: name == freezed ? _value.name : name as String,
-      times: times == freezed ? _value.times : times as String,
-      twitter: twitter == freezed ? _value.twitter : twitter as String,
-      description:
-          description == freezed ? _value.description : description as String,
+      takingAbout: takingAbout == freezed
+          ? _value.takingAbout
+          : takingAbout // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      times: times == freezed
+          ? _value.times
+          : times // ignore: cast_nullable_to_non_nullable
+              as String,
+      twitter: twitter == freezed
+          ? _value.twitter
+          : twitter // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_EntryForm with DiagnosticableTreeMixin implements _EntryForm {
   const _$_EntryForm(
-      {@required this.takingAbout,
-      @required this.name,
-      @required this.times,
-      @required this.twitter,
-      @required this.description})
-      : assert(takingAbout != null),
-        assert(name != null),
-        assert(times != null),
-        assert(twitter != null),
-        assert(description != null);
+      {required this.takingAbout,
+      required this.name,
+      required this.times,
+      required this.twitter,
+      required this.description});
 
   factory _$_EntryForm.fromJson(Map<String, dynamic> json) =>
-      _$_$_EntryFormFromJson(json);
+      _$$_EntryFormFromJson(json);
 
   @override
   final String takingAbout;
@@ -188,30 +212,25 @@ class _$_EntryForm with DiagnosticableTreeMixin implements _EntryForm {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _EntryForm &&
-            (identical(other.takingAbout, takingAbout) ||
-                const DeepCollectionEquality()
-                    .equals(other.takingAbout, takingAbout)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.times, times) ||
-                const DeepCollectionEquality().equals(other.times, times)) &&
-            (identical(other.twitter, twitter) ||
-                const DeepCollectionEquality()
-                    .equals(other.twitter, twitter)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)));
+        (other.runtimeType == runtimeType &&
+            other is _EntryForm &&
+            const DeepCollectionEquality()
+                .equals(other.takingAbout, takingAbout) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.times, times) &&
+            const DeepCollectionEquality().equals(other.twitter, twitter) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(takingAbout) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(times) ^
-      const DeepCollectionEquality().hash(twitter) ^
-      const DeepCollectionEquality().hash(description);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(takingAbout),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(times),
+      const DeepCollectionEquality().hash(twitter),
+      const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)
   @override
@@ -220,17 +239,17 @@ class _$_EntryForm with DiagnosticableTreeMixin implements _EntryForm {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_EntryFormToJson(this);
+    return _$$_EntryFormToJson(this);
   }
 }
 
 abstract class _EntryForm implements EntryForm {
   const factory _EntryForm(
-      {@required String takingAbout,
-      @required String name,
-      @required String times,
-      @required String twitter,
-      @required String description}) = _$_EntryForm;
+      {required String takingAbout,
+      required String name,
+      required String times,
+      required String twitter,
+      required String description}) = _$_EntryForm;
 
   factory _EntryForm.fromJson(Map<String, dynamic> json) =
       _$_EntryForm.fromJson;
@@ -247,5 +266,6 @@ abstract class _EntryForm implements EntryForm {
   String get description;
   @override
   @JsonKey(ignore: true)
-  _$EntryFormCopyWith<_EntryForm> get copyWith;
+  _$EntryFormCopyWith<_EntryForm> get copyWith =>
+      throw _privateConstructorUsedError;
 }

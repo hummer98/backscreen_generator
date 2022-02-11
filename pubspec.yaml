@@ -3,7 +3,7 @@ description: Zoomでの懇親会のバーチャル背景画像を簡単に作れ
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -18,36 +18,35 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.1+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  reactive_forms: ^8.0.3
-  flutter_hooks: ^0.15.0
-  freezed_annotation: ^0.12.0
-  json_annotation: ^3.1.1
-  url_launcher: ^5.7.10
-  url_launcher_web: ^0.1.5+3
-  flutter_linkify: ^4.0.2
+  reactive_forms: ^11.0.1
+  flutter_hooks: ^0.18.2+1
+  freezed_annotation: ^1.1.0
+  json_annotation: ^4.4.0
+  url_launcher: ^6.0.20
+  url_launcher_web: ^2.0.8
+  flutter_linkify: ^5.0.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.1
+  cupertino_icons: ^1.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  freezed: ^0.12.7
-  json_serializable: ^3.5.1
-  build_runner: ^1.11.1
+  freezed: ^1.1.1
+  json_serializable: ^6.1.4
+  build_runner: ^2.1.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

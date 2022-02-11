@@ -4,13 +4,13 @@ part 'entry_form.freezed.dart';
 part 'entry_form.g.dart';
 
 @freezed
-abstract class EntryForm with _$EntryForm {
+class EntryForm with _$EntryForm {
   const factory EntryForm({
-    @required String takingAbout,
-    @required String name,
-    @required String times,
-    @required String twitter,
-    @required String description,
+    required String takingAbout,
+    required String name,
+    required String times,
+    required String twitter,
+    required String description,
   }) = _EntryForm;
 
   factory EntryForm.fromJson(Map<String, dynamic> json) => _$EntryFormFromJson(json);
