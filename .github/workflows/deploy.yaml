@@ -21,10 +21,9 @@ jobs:
           flutter config --enable-web
           flutter pub get
           flutter build web
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          args: deploy
-        env:
-          PROJECT_ID: backscreen-generator
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BACKSCREEN_GENERATOR }}'
+          channelId: live
+          projectId: backscreen-generator
