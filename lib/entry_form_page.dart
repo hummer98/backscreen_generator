@@ -1,11 +1,11 @@
 import 'dart:convert';
-import 'dart:html';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:universal_html/html.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'entry_form.dart';
 
