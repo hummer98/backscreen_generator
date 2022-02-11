@@ -1,16 +1,15 @@
-# backscreen_generator
+# これは何?
 
-A new Flutter application.
+バーチャル背景ジェネレーター
+https://backscreen-generator.web.app/#/
 
-## Getting Started
+Zoomでの懇親会などで、バーチャル背景に自己紹介を記述したい場合に
+簡単に画像を作りたいという課題を解決します。
 
-This project is a starting point for a Flutter application.
+上記URLにアクセスし、表示したい項目を入れると、ボタンひとつでPNG画像をダウンロードできます。
 
-A few resources to get you started if this is your first Flutter project:
+## Architecture / アーキテクチャ
+* Flutter Web + Firebase Hosting
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## つくったひと
+* [@hummer](http://twitter.com/hummer)
