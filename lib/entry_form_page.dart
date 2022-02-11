@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:universal_html/html.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -116,29 +117,43 @@ class EntryFormPage extends StatelessWidget {
                   SizedBox(height: 32),
                   Text('作った人'),
                   SizedBox(height: 8),
-                  Text('Twitter:'),
-                  Linkify(
-                    onOpen: (link) async {
-                      if (await canLaunch(link.url)) {
-                        await launch(link.url);
-                      } else {
-                        throw 'Could not launch $link';
-                      }
-                    },
-                    text: 'https://twitter.com/hummer',
+                  Wrap(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: FaIcon(FontAwesomeIcons.twitter),
+                      ),
+                      Linkify(
+                        onOpen: (link) async {
+                          if (await canLaunch(link.url)) {
+                            await launch(link.url);
+                          } else {
+                            throw 'Could not launch $link';
+                          }
+                        },
+                        text: 'https://twitter.com/hummer',
+                      ),
+                    ],
                   ),
                   SizedBox(height: 8),
-                  Text('Github:'),
-                  Linkify(
-                    onOpen: (link) async {
-                      if (await canLaunch(link.url)) {
-                        await launch(link.url);
-                      } else {
-                        throw 'Could not launch $link';
-                      }
-                    },
-                    text: 'https://github.com/hummer98/backscreen_generator',
-                  ),
+                  Wrap(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: FaIcon(FontAwesomeIcons.github),
+                      ),
+                      Linkify(
+                        onOpen: (link) async {
+                          if (await canLaunch(link.url)) {
+                            await launch(link.url);
+                          } else {
+                            throw 'Could not launch $link';
+                          }
+                        },
+                        text: 'https://github.com/hummer98/backscreen_generator',
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),

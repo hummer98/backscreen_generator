@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 import 'entry_form_page.dart';
 
 void main() {
+  setUrlStrategy(PathUrlStrategy());
   runApp(MyApp());
 }
 
@@ -16,15 +18,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Noto Sans JP',
       ),
-      // -----以下を追加-----
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale("ja", "JP"),
-      ],
       home: EntryFormPage(),
     );
   }
