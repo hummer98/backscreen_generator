@@ -20,7 +20,7 @@ jobs:
         run: |
           flutter config --enable-web
           flutter pub get
-          flutter build web
+          flutter build web --web-renderer canvaskit --dart-define=BROWSER_IMAGE_DECODING_ENABLED=false --release
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
