@@ -148,6 +148,11 @@ class EntryFormPage extends HookWidget {
                           final anchorElement = AnchorElement(href: href);
                           anchorElement.download = 'backscreen.png';
                           anchorElement.click();
+                          await StorageService.saveEntryForm(EntryForm.fromJson(form.value));
+                          // ignore: use_build_context_synchronously
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text('saved!'),
+                          ));
                         },
                       ),
                     ),
@@ -312,7 +317,7 @@ class GeneratedScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final value = EntryForm.fromJson(ReactiveForm.of(context)!.value as Map<String, dynamic>);
-    Uint8List? iconImage = Uri.parse(value.iconUrl).data!.contentAsBytes();
+    Uint8List? iconImage = Uri.parse(value.iconUrl).data?.contentAsBytes();
     return Stack(
       children: [
         RepaintBoundary(
@@ -347,7 +352,7 @@ class GeneratedScreen extends HookWidget {
                       // 起動オプションが
                       // --releaseでないとプレビューが表示されない
                       // --dart-define=BROWSER_IMAGE_DECODING_ENABLED=falseでないと, RepaintBoundaryでレンダリングされず真っ白になる
-                      child: Image.memory(iconImage!),
+                      child: Image.memory(iconImage),
                     ),
                   if (value.description.isNotEmpty)
                     Positioned(
