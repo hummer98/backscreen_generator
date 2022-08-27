@@ -9,6 +9,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart';
+import 'package:image_picker_web/image_picker_web.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:universal_html/html.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -97,15 +98,15 @@ class EntryFormPage extends HookWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                ReactiveTextField<String>(
-                  formControlName: 'iconUrl',
-                  style: const TextStyle(height: 1.2, inherit: true),
-                  decoration: const InputDecoration(
-                    isDense: true,
-                    border: OutlineInputBorder(),
-                    labelText: 'Slackアイコン',
-                  ),
-                ),
+                // ReactiveTextField<String>(
+                //   formControlName: 'iconUrl',
+                //   style: const TextStyle(height: 1.2, inherit: true),
+                //   decoration: const InputDecoration(
+                //     isDense: true,
+                //     border: OutlineInputBorder(),
+                //     labelText: 'Slackアイコン',
+                //   ),
+                // ),
                 const SizedBox(height: 8),
                 ReactiveTextField<String>(
                   formControlName: 'description',
@@ -116,6 +117,16 @@ class EntryFormPage extends HookWidget {
                     border: OutlineInputBorder(),
                     labelText: '自己紹介',
                   ),
+                ),
+                const Text('Slackアイコン'),
+                ElevatedButton(
+                  onPressed: () async {
+                    Uint8List? bytes = await ImagePickerWeb.getImageAsBytes();
+                    if (bytes == null) return;
+                    final s = "data:image/png;base64,${base64.encode(bytes)}";
+                    form.updateValue({...form.value, "iconUrl": s});
+                  },
+                  child: const Text('Upload'),
                 ),
                 Center(
                   child: Padding(
@@ -200,15 +211,9 @@ class EntryFormPage extends HookWidget {
                 height: 1024 / 2,
                 child: ReactiveFormConsumer(
                   builder: (context, formGroup, snapshot) {
-                    final imageUrl = formGroup.value['iconUrl'] as String?;
-                    return FutureBuilder<Uint8List?>(
-                        future: fetchImage(imageUrl),
-                        builder: (context, snapshot) {
-                          return GeneratedScreen(
-                            boundaryKey: _previewKey,
-                            iconImage: snapshot.data,
-                          );
-                        });
+                    return GeneratedScreen(
+                      boundaryKey: _previewKey,
+                    );
                   },
                 ),
               ),
@@ -298,21 +303,16 @@ class GeneratedScreen extends HookWidget {
   const GeneratedScreen({
     Key? key,
     required this.boundaryKey,
-    this.iconImage,
   }) : super(key: key);
 
   final GlobalKey boundaryKey;
-  final Uint8List? iconImage;
 
   static const iconSize = 96.0;
 
   @override
   Widget build(BuildContext context) {
     final value = EntryForm.fromJson(ReactiveForm.of(context)!.value as Map<String, dynamic>);
-    // if (iconImage != null) {
-    //   final decoded = base64Encode(iconImage!);
-    //   debugPrint('[GeneratedScreen] ${iconImage?.length} ${decoded.substring(0, 50)}');
-    // }
+    Uint8List? iconImage = Uri.parse(value.iconUrl).data!.contentAsBytes();
     return Stack(
       children: [
         RepaintBoundary(
