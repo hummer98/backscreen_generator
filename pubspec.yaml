@@ -3,10 +3,10 @@ description: 自己紹介を書いたバーチャル背景画像を簡単に作�
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 1.1.1+1
+version: 1.1.2+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.5"
 
 dependencies:
   flutter:
@@ -16,28 +16,27 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
 
-  reactive_forms: ^11.0.1
+  reactive_forms: ^14.1.0
   flutter_hooks: ^0.18.2+1
-  freezed_annotation: ^1.1.0
+  hooks_riverpod: ^1.0.4
+  freezed_annotation: ^2.1.0
   json_annotation: ^4.4.0
   url_launcher: ^6.0.20
   url_launcher_web: ^2.0.8
   flutter_linkify: ^5.0.2
   universal_html:
   cupertino_icons: ^1.0.4
-  font_awesome_flutter:
+  font_awesome_flutter: ^10.1.0
+  shared_preferences: ^2.0.15
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  freezed: ^1.1.1
+  freezed: ^2.1.0+1
   json_serializable: ^6.1.4
   build_runner: ^2.1.7
-
-linter:
-  exclude:
-    - "*.g.dart"
-    - "*.freezed.dart"
+  flutter_lints: ^2.0.1
 
 flutter:
   uses-material-design: true

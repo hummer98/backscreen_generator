@@ -8,6 +8,15 @@ Zoomでの懇親会などで、バーチャル背景に自己紹介を記述し�
 
 上記URLにアクセスし、表示したい項目を入れると、ボタンひとつでPNG画像をダウンロードできます。
 
+## ローカル起動に必要なオプション
+* `flutter run -d chrome --web-renderer canvaskit --dart-define=BROWSER_IMAGE_DECODING_ENABLED=false --release`
+  * `--release`をつけないとアイコンのプレビューができない
+  * `--dart-define=BROWSER_IMAGE_DECODING_ENABLED=false`をつけないとダウンロード時にアイコンが画像にレンダリングされない
+
+## Buildコマンド
+* `flutter build web --web-renderer canvaskit --dart-define=BROWSER_IMAGE_DECODING_ENABLED=false --release`
+* `firebase deploy`
+
 ## Architecture / アーキテクチャ
 * Flutter Web + Firebase Hosting
 
@@ -15,6 +24,11 @@ Zoomでの懇親会などで、バーチャル背景に自己紹介を記述し�
 * [@hummer](http://twitter.com/hummer)
 
 ## Release Note
+
+### 1.1.2 (2022.08.27)
+- 保存機能を追加(LocalStorage)
+- 右下にアイコンを指定できるようにした
+- 左上側の空の項目をトルツメに変更
 
 ### 1.1.1 (2022.02.11)
 - 表示が中華フォントになる問題を解消
