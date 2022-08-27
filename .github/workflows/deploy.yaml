@@ -15,7 +15,7 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@master
         with:
-          channel: master
+          channel: 'stable'
       - name: Build App
         run: |
           flutter config --enable-web

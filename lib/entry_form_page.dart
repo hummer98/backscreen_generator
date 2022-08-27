@@ -142,12 +142,12 @@ class EntryFormPage extends HookWidget {
                     ),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () async {
-                    await StorageService.saveEntryForm(EntryForm.fromJson(form.value));
-                  },
-                  child: const Text('保存'),
-                ),
+                // ElevatedButton(
+                //   onPressed: () async {
+                //     await StorageService.saveEntryForm(EntryForm.fromJson(form.value));
+                //   },
+                //   child: const Text('保存'),
+                // ),
                 const SizedBox(height: 32),
                 const Text('作った人'),
                 const SizedBox(height: 8),
@@ -226,7 +226,8 @@ class EntryFormPage extends HookWidget {
 
       final response = await get(uri, headers: <String, String>{
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, DELETE, HEAD, OPTIONS'
+        // 'Access-Control-Allow-Methods': 'GET, PUT, DELETE, HEAD, OPTIONS',
+        // 'Access-Control-Allow-Headers': 'Content-Type',
       });
       final bytes = response.bodyBytes;
       final mime = response.headers['content-type'] ?? 'image/png';
